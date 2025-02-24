@@ -165,6 +165,12 @@ menu > nav > ul > li.active {
     margin-left: 220px;
 }
 
+.content.login {
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+}
+
 .content-block > header.sticky,
 .content-block.sticky {
     position: sticky !important;

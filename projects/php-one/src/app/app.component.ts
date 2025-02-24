@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {AsyncPipe} from "@angular/common";
 import {AwfControlModule, AwfIconModule} from "@awerysoftware/awf-components";
-import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
+import {BehaviorSubject, filter, map, startWith} from "rxjs";
 
 @Component({
     selector: 'app-root',
@@ -14,7 +14,6 @@ import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
 export class AppComponent {
     private readonly _router = inject(Router);
 
-    title = 'php-one';
     public location$ = new BehaviorSubject<string>('');
 
     public showLoginPage$ = this._router.events.pipe(

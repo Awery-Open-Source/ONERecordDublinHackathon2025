@@ -13,9 +13,7 @@
                 </li>
             </ul>
         </nav>
-
-        <div class="logged-user"
-             placement="right">
+        <div class="logged-user">
             <a>
                 Admin user
                 <i>1r{{ '@' }}awery.aero</i>
@@ -24,6 +22,6 @@
         </div>
     </menu>
 }
-<div class="content">
+<div class="content" [class.login]="(showLoginPage$ | async)">
     <router-outlet></router-outlet>
 </div>
