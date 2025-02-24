@@ -51,6 +51,7 @@ export class SubscribersComponent implements OnInit {
         this._request.get(
             `${environment.url}getSubs`,
         ).subscribe((data: any) => {
+            this.newSubscriber$.next(null);
             if (data.length > 0) {
                 this.settings$.next(data.map((item: Subscriber) => ({
                     ...item,
