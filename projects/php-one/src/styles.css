@@ -400,6 +400,12 @@ div.secondary-header > a > h3 {
     .awf main > .form > div.secondary-header {
         gap: 12px;
     }
+
+    .content {
+        width: calc(100vw - 82px - 24px);
+        padding: 12px;
+        margin-left: 82px;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -410,6 +416,11 @@ div.secondary-header > a > h3 {
     .awf main > form > div.secondary-header,
     .awf main > .form > div.secondary-header {
         gap: 8px;
+    }
+
+    .content {
+        width: calc(100vw - 58px - 24px);
+        margin-left: 58px;
     }
 }
 

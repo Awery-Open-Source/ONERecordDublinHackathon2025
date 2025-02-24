@@ -3,6 +3,7 @@ import {SignInComponent} from "../../../php-one-lib/src/lib/pages/sign-in/sign-i
 import {AwbsComponent} from "./pages/awbs/awbs.component";
 import {SubscribersComponent} from "./pages/subscribers/subscribers.component";
 import {CreateComponent} from "./pages/create/create.component";
+import {DetailsComponent} from "../../../php-one-lib/src/lib/pages/details/details.component";
 
 export const routes: Routes = [
     {
@@ -17,6 +18,10 @@ export const routes: Routes = [
     {
         path: 'awbs',
         component: AwbsComponent
+    },
+    {
+        path: 'details/:awb_no',
+        component: DetailsComponent
     },
     {
         path: 'create-awb',

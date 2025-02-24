@@ -1,0 +1,61 @@
+main {
+    padding: 10px 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+main.loading {
+    padding: 24px;
+}
+
+main > awf-icon {
+    width: 100%;
+    text-align: center;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+hr {
+    flex-basis: 100%;
+    margin: 4px 0;
+    border: none;
+    border-bottom: 0.5px solid #ddd;
+}
+
+main > .form-control,
+.form-row > .form-control {
+    flex: 1 1 calc(25% - 8px);
+}
+
+.form-row.row-event > .form-control:first-child {
+    flex: 1 1 calc(75% - 5px);
+}
+
+.form-row.row-event > .form-control:last-child {
+    flex: 1 1 calc(25% - 5px);
+}
+
+.form-control > div {
+    padding: 0 0 0 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+h5, .form-row {
+    flex-basis: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
