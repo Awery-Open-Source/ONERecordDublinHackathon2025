@@ -16,6 +16,7 @@
                 <th>Destination</th>
                 <th>Weight</th>
                 <th>Date</th>
+                <th class="min-width"></th>
             </tr>
             </thead>
             <tbody>
@@ -47,5 +48,13 @@
             {{ awb.weight }} kg
         </td>
         <td>{{ awb.date_create?.date | date:'d MMM y HH:mm' }}</td>
+        <td>
+            <awf-button
+                    size="sm"
+                    icon-before="eye"
+                    awfTooltip="Show details"
+                    routerLink="/details/{{ awb.awb_no }}"
+                    [background]="false"/>
+        </td>
     </tr>
 </ng-template>
