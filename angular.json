@@ -1,0 +1,183 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "php-one": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/php-one",
+      "sourceRoot": "projects/php-one/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/php-one",
+            "index": "projects/php-one/src/index.html",
+            "browser": "projects/php-one/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/php-one/tsconfig.app.json",
+            "assets": [
+              "projects/php-one/src/favicon.ico",
+              "projects/php-one/src/assets"
+            ],
+            "styles": [
+              "projects/php-one/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "php-one:build:production"
+            },
+            "development": {
+              "buildTarget": "php-one:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "php-one:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/php-one/tsconfig.spec.json",
+            "assets": [
+              "projects/php-one/src/favicon.ico",
+              "projects/php-one/src/assets"
+            ],
+            "styles": [
+              "projects/php-one/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "php-another-one": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/php-another-one",
+      "sourceRoot": "projects/php-another-one/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/php-another-one",
+            "index": "projects/php-another-one/src/index.html",
+            "browser": "projects/php-another-one/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/php-another-one/tsconfig.app.json",
+            "assets": [
+              "projects/php-another-one/src/favicon.ico",
+              "projects/php-another-one/src/assets"
+            ],
+            "styles": [
+              "projects/php-another-one/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "php-another-one:build:production"
+            },
+            "development": {
+              "buildTarget": "php-another-one:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "php-another-one:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/php-another-one/tsconfig.spec.json",
+            "assets": [
+              "projects/php-another-one/src/favicon.ico",
+              "projects/php-another-one/src/assets"
+            ],
+            "styles": [
+              "projects/php-another-one/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
