@@ -1,0 +1,121 @@
+<div class="content-block">
+    <header>
+        <h3>Settings</h3>
+        @if (!(newSubscriber$ | async)?.editableState) {
+            <awf-button
+                    icon-before="add"
+                    (click)="createSubscriber()">Add subscriber
+            </awf-button>
+        }
+    </header>
+    <main>
+        <table class="foldable">
+            <thead>
+            <tr>
+                <th class="min-width number">#</th>
+                <th style="width: 15%">Type</th>
+                <th>Base URL</th>
+                <th class="min-width"></th>
+            </tr>
+            </thead>
+            <tbody>
+                @if ((newSubscriber$ | async)?.editableState) {
+                    <ng-container
+                            [ngTemplateOutlet]="template"
+                            [ngTemplateOutletContext]="{key: -1, setting : newSubscriber$ | async}">
+                    </ng-container>
+                }
+            <ng-container
+                    *ngFor="let setting of settings$ | async; let key = index;"
+                    [ngTemplateOutlet]="template"
+                    [ngTemplateOutletContext]="{key:key, setting :setting}">
+            </ng-container>
+            </tbody>
+        </table>
+    </main>
+</div>
+
+<ng-template #template let-setting="setting" let-key="key">
+    <tr>
+        <td class="min-width number" [attr.rowspan]="setting.editableState ? 2 : null">
+            @if (key >= 0) {
+                {{ key + 1 }}.
+            }
+        </td>
+        <td>
+            @if (setting.editableState) {
+                <awf-radio [title]="'Type of subscriber'"
+                           [variants]="type"
+                           [(ngModel)]="setting.editableState.type"></awf-radio>
+            } @else {
+                {{ setting.type }}
+            }
+        </td>
+        <td>
+            @if ((setting.editableState?.type ?? setting.type) === 'webhook') {
+                @if (setting.editableState) {
+                    <awf-input title="Base URL" type="text" [clear]="true"
+                               [(ngModel)]="setting.editableState.base_url"></awf-input>
+                } @else {
+                    {{ setting.base_url }}
+                }
+            } @else {
+                @if (setting.editableState) {
+                    <awf-input title="Email" type="text" [clear]="true"
+                               [(ngModel)]="setting.editableState.email"></awf-input>
+                } @else {
+                    {{ setting.email }}
+                }
+            }
+        </td>
+        @if (setting.editableState) {
+            <td class="min-width"></td>
+        } @else {
+            <td class="min-width">
+                <div>
+                    <awf-button
+                            size="sm"
+                            icon-before="edit"
+                            awfTooltip="Edit subscriber"
+                            [background]="false"
+                            (click)="editSubscriber(setting)">
+                    </awf-button>
+                    <awf-button
+                            size="sm"
+                            icon-before="delete"
+                            awfTooltip="Delete component"
+                            [background]="false"
+                            (click)="deleteSubscriber(setting)">
+                    </awf-button>
+                </div>
+            </td>
+        }
+    </tr>
+    @if (setting.editableState) {
+        @if (setting.editableState.type === 'webhook') {
+            <tr>
+                <td colspan="3">
+                    <awf-input title="Token" type="password" [clear]="true"
+                               [(ngModel)]="setting.editableState.token"></awf-input>
+                </td>
+            </tr>
+        }
+        <tr class="save-row">
+            <td colspan="4">
+                <div>
+                    <awf-button
+                            [background]="false"
+                            icon-before="close"
+                            (click)="setting.editableState = null;">
+                        Discard changes
+                    </awf-button>
+                    <awf-button
+                            icon-before="save"
+                            (click)="saveSubscriber(setting)">
+                        Save changes
+                    </awf-button>
+                </div>
+            </td>
+        </tr>
+    }
+</ng-template>

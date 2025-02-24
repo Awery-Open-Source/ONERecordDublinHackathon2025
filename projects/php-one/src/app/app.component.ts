@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {AsyncPipe} from "@angular/common";
 import {AwfControlModule, AwfIconModule} from "@awerysoftware/awf-components";
 import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
@@ -7,7 +7,7 @@ import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, AwfIconModule, AsyncPipe, AwfControlModule],
+    imports: [RouterOutlet, AwfIconModule, AsyncPipe, AwfControlModule, RouterLink],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

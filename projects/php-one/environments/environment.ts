@@ -4,7 +4,8 @@
 
 export const environment = {
 	production: false,
-	url: 'https://phpone.awery.com'
+	// url: 'https://phpone.awery.aero/api/',
+	url: 'https://ordub.awery.com.ua/api/'
 };
 
 /*

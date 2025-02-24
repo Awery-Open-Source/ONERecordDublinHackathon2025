@@ -2,7 +2,8 @@ import {environment} from "../../../../environments/environment";
 import {Component, inject, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AwfControlModule, AwfNotificationService, AwfRequestService} from "@awerysoftware/awf-components";
+import {AwfControlModule, AwfNotificationService} from "@awerysoftware/awf-components";
+import {ApiService} from "../../../../../php-one-lib/src/lib/php-one-lib.service";
 import {BehaviorSubject} from "rxjs";
 
 
@@ -18,12 +19,11 @@ import {BehaviorSubject} from "rxjs";
     ],
     providers: [
         AwfControlModule,
-        AwfRequestService.forRoot({basicURL: environment.url}),
         AwfNotificationService
     ]
 })
 export class AwbsComponent implements OnInit {
-    private readonly _request = inject(AwfRequestService);
+    private readonly _request = inject(ApiService);
 
     public awbs$ = new BehaviorSubject<any[]>([]);
 
@@ -33,9 +33,8 @@ export class AwbsComponent implements OnInit {
     }
 
     public getAWBsList() {
-        this._request.makeRequest(
-            'get',
-            '/api/awbs'
+        this._request.get(
+            `${environment.url}getAwbs`,
         ).subscribe(data => {
             console.log('getAWBsList', data);
             // if (data.error === 0) {

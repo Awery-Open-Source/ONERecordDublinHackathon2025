@@ -11,6 +11,12 @@
                     <awf-icon icon="cube"></awf-icon>
                     Awbs
                 </li>
+                <li class="menu-docs" routerLink="/subscribers"
+                    [class.active]="(location$ | async) === 'subscribers'"
+                    [awfTooltip]="'subscribers'" placement="right">
+                    <awf-icon icon="data"></awf-icon>
+                    Subscribers
+                </li>
             </ul>
         </nav>
         <div class="logged-user">

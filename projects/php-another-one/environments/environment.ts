@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	url: 'https://phpanotherone.awery.com'
+	url: 'https://phpanotherone.awery.aero/api/'
 };
 
 /*

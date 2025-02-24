@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {SignInComponent} from "../../../php-one-lib/src/lib/pages/sign-in/sign-in.component";
 import {AwbsComponent} from "./pages/awbs/awbs.component";
+import {SubscribersComponent} from "./pages/subscribers/subscribers.component";
 
 export const routes: Routes = [
     {
@@ -15,5 +16,9 @@ export const routes: Routes = [
     {
         path: 'awbs',
         component: AwbsComponent
+    },
+    {
+        path: 'subscribers',
+        component: SubscribersComponent
     },
 ];
