@@ -1,1 +1,473 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    --awf-colors-primary: #f9c732;
+    --awf-colors-secondary: #1e32f9;
+}
+
+menu {
+    padding: 0;
+    display: flex;
+    background: var(--awf-colors-basic-white);
+    margin: 0;
+    justify-content: space-between;
+    border-right: 1px solid var(--awf-colors-grey-200);
+    width: 220px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+}
+
+menu > .logo {
+    height: 60px;
+    object-fit: contain;
+    padding: 24px 24px 16px 24px;
+    border-bottom: 1px solid var(--awf-colors-grey-200);
+    display: flex;
+    justify-content: left;
+    text-decoration: none;
+}
+
+menu > .logo > div {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+menu > .logo > div svg,
+menu > .logo > div img {
+    width: 100%;
+    margin: 0;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+menu > .logo > h2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0 0 0 8px;
+    color: #000000;
+}
+
+menu > .logo > h2 > p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--awf-colors-grey-500);
+    margin: 4px 0 0 0;
+}
+
+menu > nav,
+menu > nav > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+menu > nav {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+menu > nav > ul > li {
+    display: flex;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    line-height: 24px;
+    color: var(--awf-colors-grey-500);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+menu > nav > ul > li awf-icon,
+menu > nav > ul > li svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+menu > nav > ul > li:hover,
+menu > nav > ul > li.active {
+    background: var(--awf-colors-primary-50);
+    color: var(--awf-colors-primary-600);
+}
+
+.logged-user {
+    padding: 16px 8px;
+    border-radius: 8px;
+    background: var(--awf-colors-grey-50);
+    border: 1px solid var(--awf-colors-grey-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 24px 24px 24px;
+}
+
+.logged-user svg {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.logged-user svg > path {
+    stroke: var(--awf-colors-grey-500) !important;
+}
+
+.logged-user > a {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--awf-colors-grey-900);
+}
+
+.logged-user > a > i {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--awf-colors-grey-500);
+    display: block;
+    font-style: normal;
+}
+
+.content > *:not(router-outlet) {
+    width: 100%;
+}
+
+.content > router-outlet {
+    display: none;
+}
+
+.content > router-outlet + * {
+    width: 100%;
+}
+
+.content {
+    width: calc(100vw - 269px);
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    position: relative;
+    margin-left: 220px;
+}
+
+.content.login {
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+}
+
+.content-block > header.sticky,
+.content-block.sticky {
+    position: sticky !important;
+    top: -24px;
+    background: var(--awf-colors-basic-white) !important;
+    z-index: 100 !important;
+}
+
+.content-block.sticky {
+    top: -29px;
+}
+
+.content-block > header.sticky {
+    border-radius: 6px 6px 0 0;
+}
+
+.awf .content-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid var(--awf-colors-grey-200);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 100%;
+    cursor: default;
+    background: var(--awf-colors-basic-white);
+}
+
+.awf .content-block > header {
+    padding: 24px 24px 16px 24px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--awf-colors-grey-200);
+    position: relative;
+    z-index: 100;
+}
+
+.awf .content-block > header > div,
+.awf .content-block > header > div > div {
+    display: flex;
+    gap: 8px;
+}
+
+.awf .content-block > header > h1,
+.awf .content-block > header > h2,
+.awf .content-block > header > h3,
+.awf .content-block > header > h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.awf .content-block > header > h1 > i,
+.awf .content-block > header > h2 > i,
+.awf .content-block > header > h3 > i,
+.awf .content-block > header > h4 > i {
+    font-size: 18px;
+    font-style: normal;
+}
+
+.awf .content-block > main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.awf .content-block > main.form {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.awf main > form > div.secondary-header,
+.awf main > .form > div.secondary-header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+div.secondary-header > a > h3 {
+    color: var(--awf-colors-basic-black);
+}
+
+.awf main > form,
+.awf main > .form {
+    padding: 24px 16px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+.awf main > form > div > h3,
+.awf main > .form > div > h3 {
+    margin: 0;
+}
+
+.awf main > form > div:not(.secondary-header) > h3,
+.awf main > .form > div:not(.secondary-header) > h3 {
+    flex-basis: 100%;
+}
+
+.awf main > form > div,
+.awf main > .form > div {
+    flex: 1;
+}
+
+.awf .html-content {
+    flex-basis: 100%;
+}
+
+.awf .html-content p {
+    margin: 4px 0;
+    text-align: justify;
+    max-width: 100%;
+}
+
+.awf .html-content img {
+    cursor: pointer;
+    transition: all 0.125s ease;
+}
+
+.awf .content-group > main img:hover,
+.awf .html-content img:hover {
+    transform: scale(1.05);
+}
+
+.awf .html-content img.fr-dib {
+    display: block;
+}
+
+.awf .label-block,
+.awf .component-block {
+    display: flex;
+    gap: 8px;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+
+.awf .label-block > .highlight,
+.awf .component-block > .highlight {
+    text-transform: capitalize;
+}
+
+.awf .component-block > label,
+.awf .label-block > label {
+    flex-basis: 100%;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.awf .limited-content {
+    width: 100%;
+    max-width: 956px;
+    margin: 0 auto;
+}
+
+.awf .modal-background,
+.modal-background.awf,
+.awf .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.awf .modal-background,
+.modal-background.awf {
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.modal-background.awf > *:not(release-notes-library-gallery),
+.awf .modal-background > *:not(release-notes-library-gallery) {
+    margin: auto;
+    max-width: 90%;
+    width: 900px;
+}
+
+.awf .modal-background > *:not(release-notes-library-gallery) > *,
+.modal-background.awf > *:not(release-notes-library-gallery) > * {
+    animation: modal-show 0.3s ease forwards;
+}
+
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.awf-back-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+}
+
+@media (max-width: 1179px) {
+    .awf .content-block > header {
+        padding: 18px 18px 12px 18px;
+    }
+
+    .awf main > form > div.secondary-header,
+    .awf main > .form > div.secondary-header {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .awf .content-block > header {
+        padding: 12px 12px 8px 12px;
+    }
+
+    .awf main > form > div.secondary-header,
+    .awf main > .form > div.secondary-header {
+        gap: 8px;
+    }
+}
+
+
+@media (max-width: 1280px) {
+    menu {
+        width: 220px;
+    }
+
+    menu > nav,
+    menu > .logo {
+        padding: 12px;
+        height: auto;
+    }
+
+    .logged-user {
+        margin: 0 12px 12px 12px;
+    }
+}
+
+@media (max-width: 1179px) {
+    menu > nav > ul > li {
+        font-size: 0;
+    }
+
+    menu > nav > ul > li awf-icon {
+        margin: 0;
+    }
+
+    menu > .logo > h2,
+    .logged-user > a {
+        display: none;
+    }
+
+    menu {
+        width: 82px;
+    }
+
+    menu > .logo,
+    .logged-user {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1023px) {
+    menu {
+        width: 58px;
+    }
+
+    menu > nav,
+    menu > .logo {
+        padding: 8px 0;
+        height: auto;
+    }
+
+    .logged-user {
+        margin: 0 8px 8px 8px;
+        gap: 0;
+    }
+}
+

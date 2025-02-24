@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    --awf-colors-primary: #f04632;
+    --awf-colors-secondary: #1e32f9;
+}
+
 menu {
     padding: 0;
     display: flex;

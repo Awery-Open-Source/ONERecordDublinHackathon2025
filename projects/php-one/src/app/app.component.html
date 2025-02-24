@@ -1,4 +1,4 @@
-@if (!(showLoginPage$ | async)) {
+@if (!(hideLoginPage$ | async)) {
     <menu>
         <a class="logo" routerLink="/">
             <img src="/assets/logo.svg" alt="Logo">
@@ -6,9 +6,9 @@
         <nav>
             <ul>
                 <li class="menu-docs" routerLink="/awbs"
-                    [class.active]="(location$|async)==='releases'"
+                    [class.active]="(location$ | async) === 'awbs'"
                     [awfTooltip]="'AWBs list'" placement="right">
-                    <awf-icon icon="announcement"></awf-icon>
+                    <awf-icon icon="cube"></awf-icon>
                     Awbs
                 </li>
             </ul>
@@ -22,6 +22,6 @@
         </div>
     </menu>
 }
-<div class="content" [class.login]="(showLoginPage$ | async)">
+<div class="content" [class.login]="(hideLoginPage$ | async)">
     <router-outlet></router-outlet>
 </div>

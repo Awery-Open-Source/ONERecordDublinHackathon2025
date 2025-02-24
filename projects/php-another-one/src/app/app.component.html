@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+@if (!(hideLoginPage$ | async)) {
+    <menu>
+        <a class="logo" routerLink="/">
+            <img src="/assets/logo.svg" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li class="menu-docs" routerLink="/awbs"
+                    [class.active]="(location$ | async) === 'awbs'"
+                    [awfTooltip]="'AWBs list'" placement="right">
+                    <awf-icon icon="cube"></awf-icon>
+                    Awbs
+                </li>
+            </ul>
+        </nav>
+        <div class="logged-user">
+            <a>
+                Admin user
+                <i>1r{{ '@' }}awery.aero</i>
+            </a>
+            <awf-icon icon="log-out"></awf-icon>
+        </div>
+    </menu>
+}
+<div class="content" [class.login]="(hideLoginPage$ | async)">
+    <router-outlet></router-outlet>
+</div>

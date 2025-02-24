@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build:php-one": "ng build php-one",
-    "build:php-anouther-one": "ng build php-anouther-one",
+    "build:php-another-one": "ng build php-another-one",
     "serve:php-one": "ng serve php-one",
-    "serve:php-anouther-one": "ng serve php-anouther-one",
+    "serve:php-another-one": "ng serve php-another-one",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
