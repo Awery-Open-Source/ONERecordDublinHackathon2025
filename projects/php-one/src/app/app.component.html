@@ -1,2 +1,30 @@
-<router-outlet></router-outlet>
-<ng-template releaseNotesLibraryHost></ng-template>
+<menu>
+	<a class="logo" routerLink="/admin/users">
+		<div>
+			<img src="/assets/logo.svg" alt="Logo">
+		</div>
+	</a>
+
+	<nav>
+		<ul>
+			<li class="menu-docs" routerLink="/admin/releases"
+			    [class.active]="(location$|async)==='releases'"
+			    [awfTooltip]="'AWBs list'" placement="right">
+				<awf-icon icon="announcement"></awf-icon>
+				Awbs
+			</li>
+		</ul>
+	</nav>
+
+	<div class="logged-user"
+	     placement="right">
+		<a>
+			Admin user
+			<i>1r{{ '@' }}awery.aero</i>
+		</a>
+		<awf-icon icon="log-out"></awf-icon>
+	</div>
+</menu>
+<div class="content">
+	<router-outlet></router-outlet>
+</div>
