@@ -106,7 +106,6 @@ menu > nav > ul > li.active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 48px);
     margin: 0 24px 24px 24px;
 }
 
@@ -418,7 +417,6 @@ div.secondary-header > a > h3 {
 
     .logged-user {
         margin: 0 12px 12px 12px;
-        width: calc(100% - 24px);
     }
 }
 

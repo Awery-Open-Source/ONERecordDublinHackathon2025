@@ -4,6 +4,11 @@ import {AwbsComponent} from "../../../php-one-lib/src/lib/pages/awbs/awbs.compon
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'sign-in',
+        pathMatch: 'full'
+    },
+    {
         path: 'sign-in',
         component: SignInComponent
     },
