@@ -1,0 +1,37 @@
+form {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: end;
+}
+
+awf-input {
+    flex: unset;
+    width: calc(50% - 8px);
+}
+
+awf-button {
+    width: 100%;
+}
+
+awf-autocomplete {
+    width: calc(50% - 8px);
+    flex: unset;
+}
+
+h4 {
+    margin-left: 0;
+    width: 88%;
+}
+
+.piece {
+    width: 10%;
+}
+
+.lwh {
+    width: calc(25% - 24px);
+}
+
+.remove {
+    width: 16px;
+    margin-bottom: 8px;
+}

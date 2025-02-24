@@ -17,7 +17,7 @@ interface Subscriber {
 
 
 @Component({
-    selector: 'php-another-one-settings',
+    selector: 'php-one-settings',
     templateUrl: './subscribers.component.html',
     standalone: true,
     imports: [

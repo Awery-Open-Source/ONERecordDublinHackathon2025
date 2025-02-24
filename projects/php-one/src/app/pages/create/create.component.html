@@ -1,0 +1,75 @@
+<div class="content-block">
+    <header>
+        <h3>Create AWB</h3>
+    </header>
+    <main>
+        <form>
+            <awf-input title="AWB number" type="text"
+                       [clear]="true"
+                       [(ngModel)]="awb.awb_no"
+                       [ngModelOptions]="{standalone: true}"/>
+
+            <awf-input title="Weight" type="number"
+                       [clear]="true"
+                       [(ngModel)]="awb.weight"
+                       [ngModelOptions]="{standalone: true}"/>
+
+            <awf-input title="Origin"
+                       [clear]="true"
+                       [(ngModel)]="awb.origin"
+                       [ngModelOptions]="{standalone: true}"
+                       (change)="onChangeAirport('origin')"/>
+
+            <awf-input title="Destination"
+                       [clear]="true"
+                       [(ngModel)]="awb.destination"
+                       [ngModelOptions]="{standalone: true}"
+                       (change)="onChangeAirport('destination')"/>
+
+            <awf-input title="Commodity Type" type="text"
+                       [clear]="true"
+                       [(ngModel)]="awb.commodity_code"
+                       [ngModelOptions]="{standalone: true}"/>
+
+            <awf-input title="Product Type" type="text"
+                       [clear]="true"
+                       [(ngModel)]="awb.product_type_code"
+                       [ngModelOptions]="{standalone: true}"/>
+
+            <h4>Pieces:</h4>
+            <awf-button class="piece" (click)="addPiece()">Add Piece</awf-button>
+
+            @for (piece of awb.pieces; let i = $index; track i) {
+
+                <awf-input title="Length" type="number"
+                           class="lwh"
+                           [clear]="true"
+                           [(ngModel)]="piece.length"
+                           [ngModelOptions]="{standalone: true}"/>
+                <awf-input title="Width" type="number"
+                           class="lwh"
+                           [clear]="true"
+                           [(ngModel)]="piece.width"
+                           [ngModelOptions]="{standalone: true}"/>
+                <awf-input title="Height" type="number"
+                           class="lwh"
+                           [clear]="true"
+                           [(ngModel)]="piece.height"
+                           [ngModelOptions]="{standalone: true}"/>
+
+                <awf-input title="Weight" type="number"
+                           class="lwh"
+                           [clear]="true"
+                           [(ngModel)]="piece.weight"
+                           [ngModelOptions]="{standalone: true}"/>
+
+                <awf-button class="remove" (click)="removePiece(i)">
+                    <awf-icon icon="delete"></awf-icon>
+                </awf-button>
+            }
+
+            <awf-button type="submit" (click)="submit()">Create</awf-button>
+        </form>
+    </main>
+
+</div>

@@ -1,6 +1,10 @@
 <div class="content-block">
     <header>
         <h3>AWBs</h3>
+        <awf-button
+                icon-before="add"
+                routerLink="/create-awb">Create AWB
+        </awf-button>
     </header>
     <main>
         <table class="foldable">
@@ -8,8 +12,10 @@
             <tr>
                 <th class="min-width number">#</th>
                 <th>Number</th>
+                <th>Origin</th>
+                <th>Destination</th>
                 <th>Weight</th>
-                <th>Volume</th>
+                <th>Date</th>
             </tr>
             </thead>
             <tbody>
@@ -24,19 +30,22 @@
 </div>
 
 <ng-template #awbTemplate let-awb="awb" let-key="key">
-    <tr *ngIf="!awb.editableState">
+    <tr>
         <td class="min-width number">
             {{ key + 1 }}.
         </td>
         <td>
-            {{ awb.no }}
+            {{ awb.awb_no }}
+        </td>
+        <td>
+            {{ awb.origin }}
+        </td>
+        <td>
+            {{ awb.destination }}
         </td>
         <td>
             {{ awb.weight }} kg
         </td>
-
-        <td>
-            {{ awb.weight }} cbm
-        </td>
+        <td>{{ awb.date_create?.date | date:'d MMM y HH:mm' }}</td>
     </tr>
 </ng-template>
