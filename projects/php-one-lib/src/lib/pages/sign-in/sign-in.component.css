@@ -1,0 +1,160 @@
+.unauthorized-block {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: var(--awf-colors-basic-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.unauthorized-half {
+    width: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wave {
+    position: absolute;
+    width: 50%;
+    object-fit: cover;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    background: url('/assets/wave2.svg') no-repeat 50% 100%;
+    background-size: 300% auto;
+    z-index: 100;
+    animation: wave-motion infinite 180s linear;
+}
+
+@keyframes wave-motion {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+.illustration {
+    position: absolute;
+    width: 50%;
+    object-fit: cover;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.illustration > svg {
+    width: 590px;
+    max-width: 90%;
+    margin: auto;
+}
+
+
+:host ::ng-deep form {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+:host ::ng-deep form > div {
+    display: flex;
+    gap: 16px;
+}
+
+:host ::ng-deep form > div > awf-button {
+    flex: 10;
+}
+
+:host ::ng-deep form > div > awf-button:last-child {
+    flex: 1;
+}
+
+.form-outer {
+    width: 400px;
+}
+
+.form-outer > img {
+    width: 100%;
+    max-height: 76px;
+    object-fit: contain;
+    margin-bottom: 32px;
+}
+
+:host ::ng-deep .form-outer h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+:host ::ng-deep .form-outer h1.next-h4 {
+    margin-bottom: 8px;
+}
+
+:host ::ng-deep .form-outer h4 {
+    color: var(--awf-colors-grey-500);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 60px;
+}
+
+.copyright > svg g.awery > path,
+.copyright > svg g.awery > rect {
+    transition: all 0.25s ease;
+}
+
+.copyright:hover > svg g.awery > path,
+.copyright:hover > svg g.awery > rect {
+    fill: #e60000;
+}
+
+:host ::ng-deep .additional-button-login {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    color: var(--awf-colors-secondary-900);
+    display: block;
+}
+
+@media (max-width: 1023px) {
+    .wave,
+    .illustration {
+        display: none;
+    }
+
+    .unauthorized-half {
+        width: 100%;
+    }
+}
+
+@media (max-height: 670px) {
+    .copyright {
+        bottom: 30px;
+    }
+}
+
+@media (max-height: 590px) {
+    .copyright {
+        position: relative;
+        bottom: auto;
+        margin-top: 10px;
+    }
+
+    .unauthorized-half {
+        flex-direction: column;
+    }
+}
