@@ -34,6 +34,7 @@ interface Subscriber {
 })
 export class SubscribersComponent implements OnInit {
     private readonly _request = inject(ApiService);
+    private readonly _notification = inject(AwfNotificationService);
 
     public settings$ = new BehaviorSubject<Subscriber[]>([]);
     public newSubscriber$ = new BehaviorSubject<Subscriber | null>(null);
@@ -79,7 +80,10 @@ export class SubscribersComponent implements OnInit {
         this._request.post(
             `${environment.url}updateSub`,
             {...subscriber.editableState}
-        ).subscribe(() => this.getSubscribers());
+        ).subscribe(() => {
+            this._notification.addNotification('Subscribers created', 'Success', 'success');
+            this.getSubscribers();
+        });
     }
 
 }
