@@ -4,6 +4,13 @@ import {SubscribersComponent} from "./pages/subscribers/subscribers.component";
 import {CreateComponent} from "./pages/create/create.component";
 import {DetailsComponent} from "../../../php-one-lib/src/lib/pages/details/details.component";
 import {AwbsComponent} from "../../../php-one-lib/src/lib/pages/awbs/awbs.component";
+import {URL_CONFIG} from "../../../php-one-lib/src/lib/app-config";
+import {environment} from "../../environments/environment";
+
+const Providers = [{
+    provide: URL_CONFIG,
+    useValue: {apiUrl: environment.url, type: 'php-one'}
+}];
 
 export const routes: Routes = [
     {
@@ -17,11 +24,13 @@ export const routes: Routes = [
     },
     {
         path: 'awbs',
-        component: AwbsComponent
+        component: AwbsComponent,
+        providers: Providers
     },
     {
         path: 'details/:awb_no',
-        component: DetailsComponent
+        component: DetailsComponent,
+        providers: Providers
     },
     {
         path: 'create-awb',

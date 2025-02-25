@@ -6,7 +6,7 @@ import {AwfControlModule, AwfNotificationService} from "@awerysoftware/awf-compo
 import {BehaviorSubject} from "rxjs";
 import {ApiService} from "../../php-one-lib.service";
 import {Awb} from "../../interfaces/awb";
-import {environment} from "../../../../../php-one/environments/environment";
+import {URL_CONFIG, UrlConfig} from "../../app-config";
 
 @Component({
     selector: 'php-one-awbs',
@@ -27,6 +27,8 @@ import {environment} from "../../../../../php-one/environments/environment";
     ]
 })
 export class AwbsComponent implements OnInit {
+    public environment: UrlConfig = inject(URL_CONFIG);
+
     private readonly _request = inject(ApiService);
 
     public awbs$ = new BehaviorSubject<Awb[]>([]);
@@ -38,7 +40,7 @@ export class AwbsComponent implements OnInit {
 
     public getAWBsList() {
         this._request.get(
-            `${environment.url}getAwbs`,
+            `${this.environment.apiUrl}getAwbs`,
         ).subscribe((data: any) => {
             this.loading$.next(false);
             if (data.length > 0) {

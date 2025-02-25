@@ -1,10 +1,12 @@
 <div class="content-block">
     <header>
         <h3>AWBs</h3>
-        <awf-button
-                icon-before="add"
-                routerLink="/create-awb">Create AWB
-        </awf-button>
+        @if (environment.type === 'php-one'){
+            <awf-button
+                    icon-before="add"
+                    routerLink="/create-awb">Create AWB
+            </awf-button>
+        }
     </header>
     <main>
         <table class="foldable">

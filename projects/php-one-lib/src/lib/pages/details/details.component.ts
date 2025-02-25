@@ -1,10 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {AwfControlModule} from "@awerysoftware/awf-components";
-import {AsyncPipe, DatePipe, DecimalPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, DatePipe, DecimalPipe, NgIf} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {environment} from "../../../../../php-one/environments/environment";
 import {ApiService} from "../../php-one-lib.service";
+import {URL_CONFIG, UrlConfig} from "../../app-config";
 
 @Component({
     selector: 'app-details',
@@ -18,12 +18,14 @@ import {ApiService} from "../../php-one-lib.service";
         DatePipe,
         RouterLink,
     ],
-    providers:[
+    providers: [
         ApiService
     ],
     standalone: true
 })
 export class DetailsComponent implements OnInit {
+    public environment: UrlConfig = inject(URL_CONFIG);
+
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly _request = inject(ApiService);
@@ -38,7 +40,7 @@ export class DetailsComponent implements OnInit {
             if (!!params['awb_no']) {
                 this.getAwbDetails(params['awb_no']);
             } else {
-                this.router.navigate(['/admin/releases']).then();
+                this.router.navigate(['/awbs']).then();
             }
         });
 
@@ -46,13 +48,13 @@ export class DetailsComponent implements OnInit {
 
     private getAwbDetails(awb_no: string) {
         this._request.get(
-            `${environment.url}getAwb`,
+            `${this.environment.apiUrl}getAwb`,
             {
                 awb_no: awb_no
             }
         ).subscribe((data: any) => {
             this.loading$.next(false);
-            if (data.status ==='success') {
+            if (data.status === 'success') {
                 this.awb$.next(data.awb);
                 this.pieces$.next(data.pieces);
                 this.events$.next(data.events);
