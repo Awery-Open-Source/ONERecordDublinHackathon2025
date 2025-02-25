@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {BehaviorSubject} from "rxjs";
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
+    public user$ = new BehaviorSubject<null | string>(null);
+
+
     constructor(private http: HttpClient) {
     }
 

@@ -15,10 +15,10 @@
         </nav>
         <div class="logged-user">
             <a>
-                Admin user
-                <i>1r{{ '@' }}awery.aero</i>
+                User2
+                <i>{{ user$ | async }}</i>
             </a>
-            <awf-icon icon="log-out"></awf-icon>
+            <awf-icon routerLink="/sign-in" icon="log-out"></awf-icon>
         </div>
     </menu>
 }

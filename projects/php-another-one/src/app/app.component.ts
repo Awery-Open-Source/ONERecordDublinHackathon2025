@@ -3,6 +3,7 @@ import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {AsyncPipe} from "@angular/common";
 import {AwfControlModule, AwfIconModule} from "@awerysoftware/awf-components";
 import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
+import {ApiService} from "../../../php-one-lib/src/lib/php-one-lib.service";
 
 @Component({
     selector: 'app-root',
@@ -13,7 +14,9 @@ import {BehaviorSubject, filter, map, startWith, tap} from "rxjs";
 })
 export class AppComponent {
     private readonly _router = inject(Router);
+    private readonly _apiService = inject(ApiService);
 
+    public user$ = this._apiService.user$;
     public location$ = new BehaviorSubject<string>('');
 
     public hideLoginPage$ = this._router.events.pipe(
@@ -22,5 +25,4 @@ export class AppComponent {
         tap(e => this.location$.next((typeof e === 'string' ? e : e.url).substring(1))),
         map((e) => (typeof e === 'string' ? [e] : [e.url, e.urlAfterRedirects]).includes('/sign-in')),
     );
-
 }

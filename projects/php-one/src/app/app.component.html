@@ -21,8 +21,8 @@
         </nav>
         <div class="logged-user">
             <a>
-                General user
-                <i>1r{{ '@' }}awery.aero</i>
+                User1
+                <i>{{ user$ | async }}</i>
             </a>
             <awf-icon routerLink="/sign-in" icon="log-out"></awf-icon>
         </div>
