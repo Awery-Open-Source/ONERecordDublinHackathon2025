@@ -35,14 +35,6 @@ main > .form-control,
     flex: 1 1 calc(25% - 8px);
 }
 
-.form-row.row-event > .form-control:first-child {
-    flex: 1 1 calc(75% - 5px);
-}
-
-.form-row.row-event > .form-control:last-child {
-    flex: 1 1 calc(25% - 5px);
-}
-
 .form-control > div {
     padding: 0 0 0 3px;
     overflow: hidden;
