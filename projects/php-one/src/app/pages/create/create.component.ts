@@ -7,6 +7,7 @@ import {ApiService} from "../../../../../php-one-lib/src/lib/php-one-lib.service
 import {BehaviorSubject, map, tap} from "rxjs";
 import {Airport} from "../../../../../php-one-lib/src/lib/interfaces/airport";
 import {Awb} from "../../../../../php-one-lib/src/lib/interfaces/awb";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -27,7 +28,9 @@ import {Awb} from "../../../../../php-one-lib/src/lib/interfaces/awb";
     ]
 })
 export class CreateComponent implements OnInit {
+    private readonly _router = inject(Router);
     private readonly _request = inject(ApiService);
+    private readonly _notification = inject(AwfNotificationService);
 
     public airports$ = new BehaviorSubject<Airport[]>([]);
 
@@ -70,12 +73,13 @@ export class CreateComponent implements OnInit {
         return response$;
     }
 
-    public submit() {
-        console.log('submit', this.awb);
+    public async submit() {
         this._request.post(
             `${environment.url}updateAwb`,
             this.awb
-        ).subscribe(() => {
+        ).subscribe(async () => {
+            this._notification.addNotification('Awb created', 'Success', 'success');
+            await this._router.navigate(['/awbs']);
         });
     }
 
