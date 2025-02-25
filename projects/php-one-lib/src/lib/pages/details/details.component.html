@@ -110,6 +110,18 @@
 								<div>{{ event.location }}</div>
 							</div>
 						}
+						@if (event.weight) {
+							<div class="form-control">
+								<label>Weight</label>
+								<div>{{ event.weight }}</div>
+							</div>
+						}
+						@if (event.qty) {
+							<div class="form-control">
+								<label>QTY</label>
+								<div>{{ event.qty }}</div>
+							</div>
+						}
 						<div class="form-control">
 							<label>Date</label>
 							<div>{{ event.dateAction.date|date:'d MMM Y HH:mm:ss' }}</div>

@@ -35,6 +35,10 @@ main > .form-control,
     flex: 1 1 calc(25% - 8px);
 }
 
+.row-event > .form-control {
+    flex: 1 1 calc(20% - 8px);
+}
+
 .form-control > div {
     padding: 0 0 0 3px;
     overflow: hidden;
