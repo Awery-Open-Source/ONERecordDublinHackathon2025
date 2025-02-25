@@ -79,6 +79,12 @@
 								<label>Event</label>
 								<div>{{ event.type }}</div>
 							</div>
+							@if (event.location) {
+								<div class="form-control">
+									<label>Location</label>
+									<div>{{ event.location }}</div>
+								</div>
+							}
 							<div class="form-control">
 								<label>Date</label>
 								<div>{{ event.dateAction.date|date:'d MMM Y HH:mm:ss' }}</div>
