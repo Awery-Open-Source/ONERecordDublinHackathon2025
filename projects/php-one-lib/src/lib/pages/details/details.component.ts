@@ -39,6 +39,7 @@ export class DetailsComponent implements OnInit {
     public awb$ = new BehaviorSubject<Awb | null>(null);
     public pieces$ = new BehaviorSubject<Piece[] | null>(null);
     public events$ = new BehaviorSubject<any>(null);
+    public events1r$ = new BehaviorSubject<any>(null);
     public newEvent$ = new BehaviorSubject<any>(null);
 
     public eventsTypes$ = new BehaviorSubject<{ label: string, value: string }[]>([
@@ -92,6 +93,7 @@ export class DetailsComponent implements OnInit {
 
     }
 
+
     private getAwbDetails(awb_no: string) {
         this._request.get(
             `${this.environment.apiUrl}getAwb`,
@@ -102,6 +104,7 @@ export class DetailsComponent implements OnInit {
                 this.awb$.next(data.awb);
                 this.pieces$.next(data.pieces);
                 this.events$.next(data.events);
+                this.events1r$.next(data.events1r);
             }
         });
     }

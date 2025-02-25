@@ -128,6 +128,34 @@
 						</div>
 					</div>
 				}
+
+				@for (event of events1r$|async; track event.id) {
+					<div class="form-row row-event">
+						<div class="form-control">
+							<label>ID</label>
+							<div>
+								<a [href]="'https://phpone.awery.aero/logistic-objects/'+(awb.one_record_url|slice:-36)+'/logistics-events/'+event.id"
+								target="_blank">
+									{{ event.id }}
+								</a>
+							</div>
+						</div>
+						<div class="form-control">
+							<label>Event</label>
+							<div>{{ event.eventCode }}</div>
+						</div>
+						@if (event.eventLocation) {
+							<div class="form-control">
+								<label>Location</label>
+								<div>{{ event.eventLocation }}</div>
+							</div>
+						}
+						<div class="form-control">
+							<label>Date</label>
+							<div>{{ event.eventDate?.date|date:'d MMM Y HH:mm:ss' }}</div>
+						</div>
+					</div>
+				}
 			</ng-container>
 		}
 	</main>
