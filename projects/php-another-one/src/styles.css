@@ -1,6 +1,27 @@
 * {
     --awf-colors-primary: #f9c732;
     --awf-colors-secondary: #1e32f9;
+
+    --awf-colors-primary-25: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 95%);
+    --awf-colors-primary-50: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 88%);
+    --awf-colors-primary-100: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 75%);
+    --awf-colors-primary-200: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 50%);
+    --awf-colors-primary-300: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 25%);
+    --awf-colors-primary-400: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-white) 10%);
+
+
+    --awf-colors-primary-600: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-black) 20%);
+    --awf-colors-primary-700: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-black) 40%);
+    --awf-colors-primary-800: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-black) 60%);
+    --awf-colors-primary-900: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-black) 75%);
+
+
+    --awf-colors-secondary-600: color-mix(in oklab, var(--awf-colors-secondary), var(--awf-colors-basic-black) 20%);
+    --awf-colors-secondary-700: color-mix(in oklab, var(--awf-colors-secondary), var(--awf-colors-basic-black) 40%);
+    --awf-colors-secondary-800: color-mix(in oklab, var(--awf-colors-secondary), var(--awf-colors-basic-black) 60%);
+    --awf-colors-secondary-900: color-mix(in oklab, var(--awf-colors-secondary), var(--awf-colors-basic-black) 75%);
+
+    --awf-color-primary-desaturate: color-mix(in oklab, var(--awf-colors-primary), var(--awf-colors-basic-grey) 50%);
 }
 
 menu {
