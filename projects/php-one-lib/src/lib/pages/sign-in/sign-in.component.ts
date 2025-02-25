@@ -32,6 +32,7 @@ export class SignInComponent {
 
     public handleSignIn() {
         if (this.loginForm.value.email) {
+            localStorage.setItem('user', this.loginForm.value.email);
             this._apiService.user$.next(this.loginForm.value.email);
         }
         //For test purposes only

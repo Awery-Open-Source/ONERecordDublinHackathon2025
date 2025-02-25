@@ -7,7 +7,7 @@ import {BehaviorSubject} from "rxjs";
     providedIn: 'root'
 })
 export class ApiService {
-    public user$ = new BehaviorSubject<null | string>(null);
+    public user$ = new BehaviorSubject<null | string>(localStorage.getItem('user') ?? null);
 
 
     constructor(private http: HttpClient) {
