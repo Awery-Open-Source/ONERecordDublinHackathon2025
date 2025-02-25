@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:php-one": "ng build php-one",
-    "build:php-another-one": "ng build php-another-one",
+    "build:php-one": "ng build php-one --configuration production",
+    "build:php-another-one": "ng build php-another-one --configuration production",
     "serve:php-one": "ng serve php-one --ssl true --ssl-cert \"projects/ssl/server.crt\" --ssl-key \"projects/ssl/server.key\"",
     "serve:php-another-one": "ng serve php-another-one --ssl-cert \"projects/ssl/server.crt\" --ssl-key \"projects/ssl/server.key\"",
     "watch": "ng build --watch --configuration development",
