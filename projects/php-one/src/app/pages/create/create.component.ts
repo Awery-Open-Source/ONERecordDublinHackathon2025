@@ -41,7 +41,8 @@ export class CreateComponent implements OnInit {
         destination: '',
         commodity_code: null,
         product_type_code: null,
-        pieces: []
+        pieces: [],
+        one_record_url: null
     };
 
     ngOnInit() {

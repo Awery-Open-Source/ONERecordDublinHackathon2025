@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-control">
 					<label>Date create</label>
-					<div>{{ awb.date_create.date|date:'d MMM Y HH:mm' }}</div>
+					<div>{{ awb.date_create?.date|date:'d MMM Y HH:mm' }}</div>
 				</div>
 				<div class="form-control">
 					<label>Origin</label>
@@ -46,10 +46,10 @@
 					<label>Product type code</label>
 					<div>{{ awb.product_type_code }}</div>
 				</div>
-				@if ((pieces$|async).length) {
+				@if ((pieces$|async) && (pieces$|async)?.length) {
 					<hr>
 					<h5>Pieces details</h5>
-					@for (piece of pieces$|async; track piece.id) {
+					@for (piece of (pieces$|async); track piece.id) {
 						<div class="form-row">
 							<div class="form-control">
 								<label>Length</label>
@@ -72,7 +72,29 @@
 				}
 				@if ((events$|async).length) {
 					<hr>
-					<h5>AWB Events</h5>
+					<div class="inline-button">
+						<h5>AWB Events</h5>
+						<awf-button icon-after="add" awfTooltip="Add new AWB event" placement="left"
+						            (click)="createEvent()"></awf-button>
+					</div>
+					@if ((newEvent$|async); as eventCreating) {
+						<div class="form-row row-event">
+							<awf-autocomplete
+									title="Event tyoe"
+									[(ngModel)]="eventCreating.type"
+									[suggestions]="eventsTypes$|async"
+									[clear]="true"
+							></awf-autocomplete>
+							<awf-input title="Event location" [(ngModel)]="eventCreating.location"
+							           [clear]="true"></awf-input>
+							<awf-button title="Cancel" icon-before="close" (click)="newEvent$.next(null);"
+							            awfTooltip="Cancel"></awf-button>
+							<awf-button title="Save" icon-before="save" awfTooltip="Save new AWB Event"
+							            type="success"
+							            placement="left"
+							            (click)="saveAwbEvent()"></awf-button>
+						</div>
+					}
 					@for (event of events$|async; track event.id) {
 						<div class="form-row row-event">
 							<div class="form-control">

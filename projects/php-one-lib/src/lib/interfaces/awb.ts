@@ -24,4 +24,5 @@ export interface Awb {
     product_type_code: null | string;
     date_create?: Date;
     pieces: Piece[];
+    one_record_url: string | null;
 }
