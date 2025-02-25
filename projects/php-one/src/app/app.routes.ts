@@ -1,9 +1,9 @@
 import {Routes} from '@angular/router';
 import {SignInComponent} from "../../../php-one-lib/src/lib/pages/sign-in/sign-in.component";
-import {AwbsComponent} from "./pages/awbs/awbs.component";
 import {SubscribersComponent} from "./pages/subscribers/subscribers.component";
 import {CreateComponent} from "./pages/create/create.component";
 import {DetailsComponent} from "../../../php-one-lib/src/lib/pages/details/details.component";
+import {AwbsComponent} from "../../../php-one-lib/src/lib/pages/awbs/awbs.component";
 
 export const routes: Routes = [
     {

@@ -20,6 +20,13 @@
             </tr>
             </thead>
             <tbody>
+	            @if (loading$|async) {
+		            <tr>
+			            <td colspan="7" class="loading">
+				            <awf-icon icon="refresh"></awf-icon>
+			            </td>
+		            </tr>
+	            }
             <ng-container
                     *ngFor="let awb of awbs$ | async; let key = index;"
                     [ngTemplateOutlet]="awbTemplate"

@@ -1,16 +1,17 @@
-import {environment} from "../../../../environments/environment";
 import {Component, inject, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {AwfControlModule, AwfNotificationService} from "@awerysoftware/awf-components";
 import {BehaviorSubject} from "rxjs";
-import {ApiService} from "../../../../../php-one-lib/src/lib/php-one-lib.service";
-import {Awb} from "../../../../../php-one-lib/src/lib/interfaces/awb";
+import {ApiService} from "../../php-one-lib.service";
+import {Awb} from "../../interfaces/awb";
+import {environment} from "../../../../../php-one/environments/environment";
 
 @Component({
     selector: 'php-one-awbs',
     templateUrl: './awbs.component.html',
+    styleUrls: ['./awbs.component.css'],
     standalone: true,
     imports: [
         CommonModule,
@@ -29,6 +30,7 @@ export class AwbsComponent implements OnInit {
     private readonly _request = inject(ApiService);
 
     public awbs$ = new BehaviorSubject<Awb[]>([]);
+    public loading$ = new BehaviorSubject<boolean>(true);
 
     ngOnInit() {
         this.getAWBsList();
@@ -38,6 +40,7 @@ export class AwbsComponent implements OnInit {
         this._request.get(
             `${environment.url}getAwbs`,
         ).subscribe((data: any) => {
+            this.loading$.next(false);
             if (data.length > 0) {
                 this.awbs$.next(data);
             }

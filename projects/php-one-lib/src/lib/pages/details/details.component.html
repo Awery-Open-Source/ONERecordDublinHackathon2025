@@ -3,82 +3,90 @@
 		<awf-button routerLink="/awbs">
 			<awf-icon icon="chevron-left"></awf-icon>
 		</awf-button>
-		<h3>AWB #{{ (awb$|async)?.awb_no }}</h3>
+		<h3>AWB @if (!(loading$ | async)) {
+			#{{ (awb$|async)?.awb_no }}
+		}</h3>
 	</header>
-	<main [class.loading]="loading$ | async" *ngIf="awb$|async as awb">
+	<main [class.loading]="loading$ | async">
 		@if ((loading$ | async)) {
 			<awf-icon icon="refresh"></awf-icon>
 		} @else {
-			<h5>Awb details</h5>
-			<div class="form-control">
-				<label>Awb Number</label>
-				<div>{{ awb.awb_no }}</div>
-			</div>
-			<div class="form-control">
-				<label>One record ID</label>
-				<div>{{ awb.one_record_url }}</div>
-			</div>
-			<div class="form-control">
-				<label>Weight</label>
-				<div>{{ awb.weight|number:'1.0-2' }} kg</div>
-			</div>
-			<div class="form-control">
-				<label>Date create</label>
-				<div>{{ awb.date_create.date|date:'d MMM Y HH:mm' }}</div>
-			</div>
-			<div class="form-control">
-				<label>Origin</label>
-				<div>{{ awb.origin }}</div>
-			</div>
-			<div class="form-control">
-				<label>Destination</label>
-				<div>{{ awb.destination }}</div>
-			</div>
+			<ng-container *ngIf="awb$|async as awb">
+				<h5>Awb details</h5>
+				<div class="form-control">
+					<label>Awb Number</label>
+					<div>{{ awb.awb_no }}</div>
+				</div>
+				<div class="form-control">
+					<label>One record ID</label>
+					<div>{{ awb.one_record_url }}</div>
+				</div>
+				<div class="form-control">
+					<label>Weight</label>
+					<div>{{ awb.weight|number:'1.0-2' }} kg</div>
+				</div>
+				<div class="form-control">
+					<label>Date create</label>
+					<div>{{ awb.date_create.date|date:'d MMM Y HH:mm' }}</div>
+				</div>
+				<div class="form-control">
+					<label>Origin</label>
+					<div>{{ awb.origin }}</div>
+				</div>
+				<div class="form-control">
+					<label>Destination</label>
+					<div>{{ awb.destination }}</div>
+				</div>
 
-			<div class="form-control">
-				<label>Commodity Code</label>
-				<div>{{ awb.commodity_code }}</div>
-			</div>
-			<div class="form-control">
-				<label>Product type code</label>
-				<div>{{ awb.product_type_code }}</div>
-			</div>
-			<hr>
-			<h5>Pieces details</h5>
-			@for (piece of pieces$|async; track piece.id) {
-				<div class="form-row">
-					<div class="form-control">
-						<label>Length</label>
-						<div>{{ piece.length|number:'1.0-2' }} cm</div>
-					</div>
-					<div class="form-control">
-						<label>Width</label>
-						<div>{{ piece.width|number:'1.0-2' }} cm</div>
-					</div>
-					<div class="form-control">
-						<label>Height</label>
-						<div>{{ piece.height|number:'1.0-2' }} cm</div>
-					</div>
-					<div class="form-control">
-						<label>Weight</label>
-						<div>{{ piece.weight|number:'1.0-2' }} kg</div>
-					</div>
+				<div class="form-control">
+					<label>Commodity Code</label>
+					<div>{{ awb.commodity_code }}</div>
 				</div>
-			}
-			<hr>
-			<h5>AWB Events</h5>
-			@for (event of events$|async; track event.id) {
-				<div class="form-row row-event">
-					<div class="form-control">
-						<label>Event</label>
-						<div>{{ event.type }}</div>
-					</div>
-					<div class="form-control">
-						<label>Date</label>
-						<div>{{ event.dateAction.date|date:'d MMM Y HH:mm:ss' }}</div>
-					</div>
+				<div class="form-control">
+					<label>Product type code</label>
+					<div>{{ awb.product_type_code }}</div>
 				</div>
-			}
+				@if ((pieces$|async).length) {
+					<hr>
+					<h5>Pieces details</h5>
+					@for (piece of pieces$|async; track piece.id) {
+						<div class="form-row">
+							<div class="form-control">
+								<label>Length</label>
+								<div>{{ piece.length|number:'1.0-2' }} cm</div>
+							</div>
+							<div class="form-control">
+								<label>Width</label>
+								<div>{{ piece.width|number:'1.0-2' }} cm</div>
+							</div>
+							<div class="form-control">
+								<label>Height</label>
+								<div>{{ piece.height|number:'1.0-2' }} cm</div>
+							</div>
+							<div class="form-control">
+								<label>Weight</label>
+								<div>{{ piece.weight|number:'1.0-2' }} kg</div>
+							</div>
+						</div>
+					}
+				}
+				@if ((events$|async).length) {
+					<hr>
+					<h5>AWB Events</h5>
+					@for (event of events$|async; track event.id) {
+						<div class="form-row row-event">
+							<div class="form-control">
+								<label>Event</label>
+								<div>{{ event.type }}</div>
+							</div>
+							<div class="form-control">
+								<label>Date</label>
+								<div>{{ event.dateAction.date|date:'d MMM Y HH:mm:ss' }}</div>
+							</div>
+						</div>
+					}
+				}
+			</ng-container>
 		}
 	</main>
 </div>
