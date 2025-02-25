@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {AwfControlModule, AwfNotificationService} from "@awerysoftware/awf-components";
-import {AsyncPipe, DatePipe, DecimalPipe, NgIf} from "@angular/common";
+import {AsyncPipe, DatePipe, DecimalPipe, NgIf, SlicePipe} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {ApiService} from "../../php-one-lib.service";
 import {URL_CONFIG, UrlConfig} from "../../app-config";
@@ -20,6 +20,7 @@ import {FormsModule} from "@angular/forms";
         DatePipe,
         RouterLink,
         FormsModule,
+        SlicePipe,
     ],
     providers: [
         ApiService

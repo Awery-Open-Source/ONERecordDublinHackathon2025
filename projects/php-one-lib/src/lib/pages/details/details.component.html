@@ -19,7 +19,11 @@
 				</div>
 				<div class="form-control">
 					<label>One record ID</label>
-					<div>{{ awb.one_record_url }}</div>
+					@if (awb.one_record_url) {
+						<div>
+							<a [href]="awb.one_record_url" target="_blank">{{ awb.one_record_url|slice:-36 }}</a>
+						</div>
+					}
 				</div>
 				<div class="form-control">
 					<label>Weight</label>
